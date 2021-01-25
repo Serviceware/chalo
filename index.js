@@ -3,9 +3,7 @@
   const fs = require('fs');
 
   const settings = JSON.parse(fs.readFileSync('./chalo.json'));
-
   var args = process.argv.slice(2);
-  console.log(args);
 
   switch (args[0]) {
     case 'a':
@@ -14,11 +12,11 @@
       break;
     case 'g':
     case 'generate':
-      generateChangelog(args.includes('rm'));
+      generateChangelog();
       break;
     case 'p':
     case 'publish':
-      publishNewVersion(args.includes('rm'));
+      publishNewVersion();
       break;
     default:
       console.log('"a" or "add" to add new log.');
@@ -33,11 +31,11 @@
     try {
       userLogFile = fs.readFileSync(filePath, { encoding: 'utf8', flag: 'r' });
     } catch (error) {}
-    let userLogs = JSON.parse(userLogFile) || [];
+    let userLogs = JSON.parse(userLogFile);
     if (!Array.isArray(userLogs)) {
       throw 'User log file must contain array of logs.';
     }
-    const userLog = getLogInfoFromUserInput();
+    const userLog = await getLogInfoFromUserInput();
     userLogs.push(userLog);
     fs.writeFileSync(filePath, JSON.stringify(userLogs));
     console.log('Log file created.');
@@ -156,6 +154,7 @@
 
   function getUsername() {
     const usernameOs = require('os').userInfo().username;
+    var path = require('path');
     const userNameEnv = process.env['USERPROFILE'].split(path.sep)[2];
     return usernameOs || userNameEnv;
   }
