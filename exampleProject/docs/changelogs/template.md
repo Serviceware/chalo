@@ -1,11 +1,9 @@
-{{HEADER}}
-### {{version}}
+{{HEADER}}### {{version}}
 
 |     |     |
 | --- | --- |
 {{/HEADER}}
-{{LOG}}
-| {{type}} | **{{title}}**: {{description}} |
+{{LOG}}| {{type}} | **{{title}}**: {{description}} |
 {{/LOG}}
 {{FOOTER}}
 <br/>

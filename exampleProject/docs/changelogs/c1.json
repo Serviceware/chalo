@@ -1,5 +1,6 @@
-{
+[{
     "type": "bug-fix",
     "title": "Text Field",
     "description": "Fixed invalid class when set the value programmatically of required text field."
 }
+]

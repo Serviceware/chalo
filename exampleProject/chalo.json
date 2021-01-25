@@ -3,5 +3,8 @@
     "types": {
         "b": "bug-fix",
         "f": "feature"
+    },
+    "defaultValues":{
+        "version": "Next Release"
     }
 }
