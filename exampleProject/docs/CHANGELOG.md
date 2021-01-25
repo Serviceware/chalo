@@ -2,18 +2,32 @@
 
 |     |     |
 | --- | --- |
-| wefewfaf | **wegeweg**: sdcsdc |
-| ewffewfqwf | **qwe**: fewf wd |
-| ttwfefwfef | **rthminqwindwqd**: msimmien nfewnfdwi ndfewlfnwndioa fnlfkwanifaw fnliawidnaliwn fawfaffwdwdaw. |
-| bug-fix | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
-| 23e23d23 | **c23d23d23f**: 34t43f234 |
-| dewdqw | **fqfqwdwq**: sdcasc |
+| feature | **mynewfeature**: dawdwfwefwef qwdqdqwd q |
+
 
 <br/>
+
+### 1.0.2
+
+|     |     |
+| --- | --- |
+| bug-fix | **Dropdown**: Fixed some issues about dropdown. |
+| bug-fix | **fqfqwdwq**: sdcasc |
+| bug-fix | **wegeweg**: sdcsdc |
+| feature | **c23d23d23f**: 34t43f234 |
+| feature | **qwe**: fewf wd |
+| feature | **rthminqwindwqd**: msimmien nfewnfdwi ndfewlfnwndioa fnlfkwanifaw fnliawidnaliwn fawfaffwdwdaw. |
+| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
+
+
+<br/>
+
 ### 1.0.1
 
 |     |     |
 | --- | --- |
-| sdcdscsdc1111 | **adfvdfvew1111**: wevqevwev1111 |
+| bug-fix | **adfvdfvew1111**: wevqevwev1111 |
+
 
 <br/>
+
