@@ -1,7 +1,7 @@
 {
   "name": "@triuman/calogen",
-  "version": "0.0.4",
-  "description": "Changelog merger.",
+  "version": "0.0.5",
+  "description": "A changelog manager to avoid merge conflicts.",
   "main": "index.js",
   "bin": {
     "calogen": "index.js"
