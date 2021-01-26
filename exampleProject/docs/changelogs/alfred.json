@@ -1,0 +1,13 @@
+[
+    {
+        "type": "f",
+        "title": "Text-Field",
+        "description": "Text field can now turn into an elephant."
+    },
+    {
+        "type": "f",
+        "title": "Taskbar",
+        "description": "Added some functionality to Taskbar.",
+        "version": "1.0.1"
+    }
+]

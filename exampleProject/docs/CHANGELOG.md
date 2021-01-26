@@ -2,22 +2,7 @@
 
 |     |     |
 | --- | --- |
-| feature | **mynewfeature**: dawdwfwefwef qwdqdqwd q |
-
-
-<br/>
-
-### 1.0.2
-
-|     |     |
-| --- | --- |
-| bug-fix | **Dropdown**: Fixed some issues about dropdown. |
-| bug-fix | **fqfqwdwq**: sdcasc |
-| bug-fix | **wegeweg**: sdcsdc |
-| feature | **c23d23d23f**: 34t43f234 |
-| feature | **qwe**: fewf wd |
-| feature | **rthminqwindwqd**: msimmien nfewnfdwi ndfewlfnwndioa fnlfkwanifaw fnliawidnaliwn fawfaffwdwdaw. |
-| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
+| feature | **Text-Field**: Text field can now turn into an elephant. |
 
 
 <br/>
@@ -26,7 +11,18 @@
 
 |     |     |
 | --- | --- |
-| bug-fix | **adfvdfvew1111**: wevqevwev1111 |
+| feature | **Taskbar**: Added some functionality to Taskbar. |
+
+
+<br/>
+
+### 1.0.2
+
+|     |     |
+| --- | --- |
+| bug-fix | **Chicago Bulls**: The net was not working properly. |
+| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
+| feature | **User Profile Score**: Users can see their score in their profiles. |
 
 
 <br/>

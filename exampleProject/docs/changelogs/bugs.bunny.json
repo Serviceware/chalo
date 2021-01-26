@@ -1,0 +1,8 @@
+[
+    {
+        "type": "f",
+        "title": "User Profile Score",
+        "description": "Users can see their score in their profiles.",
+        "version": "1.0.2"
+    }
+]
