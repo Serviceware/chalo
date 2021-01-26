@@ -7,20 +7,11 @@
 
 <br/>
 
-### 1.0.1
+### 5.0.0 (2021-01-15)
 
 |     |     |
 | --- | --- |
-| feature | **Taskbar**: Added some functionality to Taskbar. |
-
-
-<br/>
-
-### 1.0.2
-
-|     |     |
-| --- | --- |
-| bug-fix | **Chicago Bulls**: The net was not working properly. |
+| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
 
 
 <br/>
@@ -34,11 +25,20 @@
 
 <br/>
 
-### 5.0.0 (2021-01-15)
+### 1.0.2
 
 |     |     |
 | --- | --- |
-| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
+| bug-fix | **Chicago Bulls**: The net was not working properly. |
+
+
+<br/>
+
+### 1.0.1
+
+|     |     |
+| --- | --- |
+| feature | **Taskbar**: Added some functionality to Taskbar. |
 
 
 <br/>
