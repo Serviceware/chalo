@@ -96,7 +96,7 @@ function generateChangelog() {
         });
       });
       const versions = Object.keys(logsByVersion).map((version) => ({ version, logs: logsByVersion[version] }));
-      versions.sort((a, b) => b.version - a.version); // sort alphabetically
+      versions.sort((a, b) => b.version.toUpperCase() < a.version.toUpperCase() ? 1 : -1); // sort alphabetically
       versions.splice(0, 0, { version: 'oncoming', logs: oncomingLogs });
       const template = fs.readFileSync(settings.logsFolderPath + '/template.md', { encoding: 'utf8', flag: 'r' });
       const changelog = parseVersions(versions, template);

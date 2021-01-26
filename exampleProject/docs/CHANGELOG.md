@@ -21,8 +21,24 @@
 |     |     |
 | --- | --- |
 | bug-fix | **Chicago Bulls**: The net was not working properly. |
-| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
+
+
+<br/>
+
+### 4.0.1 (2021-01-15)
+
+|     |     |
+| --- | --- |
 | feature | **User Profile Score**: Users can see their score in their profiles. |
+
+
+<br/>
+
+### 5.0.0 (2021-01-15)
+
+|     |     |
+| --- | --- |
+| feature | **Text Field**: Fixed invalid class when set the value programmatically of required text field. |
 
 
 <br/>
