@@ -87,7 +87,7 @@ function generateChangelog() {
 
         const userLogs = JSON.parse(fs.readFileSync(settings.logsFolderPath + '/' + file.name, { encoding: 'utf8', flag: 'r' }));
         userLogs.forEach((ul) => {
-          if (!ul.version) {
+          if (ul.version === undefined || ul.version === null) {
             oncomingLogs.push(ul);
           } else {
             logsByVersion[ul.version] = logsByVersion[ul.version] ?? [];
@@ -96,7 +96,7 @@ function generateChangelog() {
         });
       });
       const versions = Object.keys(logsByVersion).map((version) => ({ version, logs: logsByVersion[version] }));
-      versions.sort((a, b) => b.version.toUpperCase() > a.version.toUpperCase() ? 1 : -1); // sort alphabetically
+      versions.sort((a, b) => (b.version.toUpperCase() > a.version.toUpperCase() ? 1 : -1)); // sort alphabetically
       versions.splice(0, 0, { version: 'oncoming', logs: oncomingLogs });
       const template = fs.readFileSync(settings.logsFolderPath + '/template.md', { encoding: 'utf8', flag: 'r' });
       const changelog = parseVersions(versions, template);
@@ -130,7 +130,7 @@ function parseVersions(versions, template) {
       const logStr = applyValues(logTemp, logKeyValues);
       versionLogs.push(logStr);
     });
-    versionLogs.sort((a,b) => a.localeCompare(b));
+    versionLogs.sort((a, b) => a.localeCompare(b));
     changelogArray = changelogArray.concat(versionLogs);
     const footer = applyValues(footerTemp, []);
     changelogArray.push(footer);
@@ -140,7 +140,7 @@ function parseVersions(versions, template) {
 
 function applyValues(template, keyValues) {
   keyValues.forEach((kv) => {
-    if (kv.value) template = replaceAll(template, `{{${kv.key}}}`, kv.value);
+    if (kv.value !== undefined || kv.value !== null) template = replaceAll(template, `{{${kv.key}}}`, kv.value);
   });
   Object.keys(settings.defaultValues).forEach((defaultKey) => {
     template = replaceAll(template, `{{${defaultKey}}}`, settings.defaultValues[defaultKey]);
