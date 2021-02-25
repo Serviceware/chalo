@@ -6,8 +6,20 @@ const fs = require('fs');
 let settings = null;
 
 function start() {
-  settings = JSON.parse(fs.readFileSync('./calogen.json'));
   var args = process.argv.slice(2);
+
+  if(args[0] === 'init'){
+    createCalogenJsonFile();
+    console.log('calogen.json file is created with default settings.');
+    return;
+  }
+  
+  try {
+    settings = JSON.parse(fs.readFileSync('./calogen.json'));
+  } catch (error) {
+    console.error('Please call "calogen init" to create calogen.json file.');
+    return; 
+  }
 
   switch (args[0]) {
     case 'a':
@@ -33,6 +45,20 @@ function start() {
       console.log('"p" or "publish" to publish a new version.');
   }
 
+  function createCalogenJsonFile() {
+    const defaultSettings = {
+      logsFolderPath: './docs/changelogs',
+      types: {
+        b: 'bug-fix',
+        f: 'feature',
+      },
+      defaultValues: {
+        version: 'Next Release',
+      },
+    };
+    fs.writeFileSync('./calogen.json', JSON.stringify(defaultSettings, undefined, 4));
+  }
+
   async function addNewLog() {
     const username = getUsername();
     const filePath = `${settings.logsFolderPath}/${username}.json`;
@@ -46,7 +72,7 @@ function start() {
     }
     const userLog = await getLogInfoFromUserInput();
     userLogs.push(userLog);
-    fs.writeFileSync(filePath, JSON.stringify(userLogs));
+    fs.writeFileSync(filePath, JSON.stringify(userLogs, undefined, 4));
     console.log('Log file created.');
     console.log(filePath);
     try {
@@ -179,7 +205,7 @@ function publishNewVersion(version) {
             ul.version = version;
           }
         });
-        fs.writeFileSync(filePath, JSON.stringify(userLogs));
+        fs.writeFileSync(filePath, JSON.stringify(userLogs, undefined, 4));
       });
     }
     generateChangelog();
