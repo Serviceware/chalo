@@ -1,1 +1,8 @@
-[{"type":"f","title":"Text Field","description":"Fixed invalid class when set the value programmatically of required text field.","version":"5.0.0 (2021-01-15)"}]
+[
+    {
+        "type": "f",
+        "title": "Text Field",
+        "description": "Fixed invalid class when set the value programmatically of required text field.",
+        "version": "5.0.0 (2021-01-15)"
+    }
+]

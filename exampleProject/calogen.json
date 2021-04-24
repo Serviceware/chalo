@@ -1,0 +1,10 @@
+{
+    "logsFolderPath": "./docs/changelogs",
+    "types": {
+        "b": "bug-fix",
+        "f": "feature"
+    },
+    "defaultValues":{
+        "version": "Next Release"
+    }
+}

@@ -2,7 +2,8 @@
     {
         "type": "f",
         "title": "Text-Field",
-        "description": "Text field can now turn into an elephant."
+        "description": "Text field can now turn into an elephant.",
+        "version": "322383832"
     },
     {
         "type": "f",

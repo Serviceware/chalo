@@ -2,11 +2,41 @@
     {
         "type": "f",
         "title": "programmatic",
-        "description": "My new descriptpad"
+        "description": "My new descriptpad",
+        "version": "my new version"
     },
     {
         "type": "b",
         "title": "sadasd",
-        "description": "wefefasdf dsf sefefsdf"
+        "description": "wefefasdf dsf sefefsdf",
+        "bugLink": "https://mybuglink.com",
+        "version": "my new version"
+    },
+    {
+        "type": "f",
+        "title": "my breaking change",
+        "description": "very very important stuff happened.",
+        "isBreakingChange": true,
+        "version": "6.0.0"
+    },
+    {
+        "type": "f",
+        "title": "something",
+        "description": "something has changed.",
+        "version": "6.0.0"
+    },
+    {
+        "type": "f",
+        "title": "my new feature",
+        "description": "sadlemdfe fadf eiofmalkdekldekdew idweidewmfowef",
+        "version": "my"
+    },
+    {
+        "type": "f",
+        "title": "ewfwef",
+        "description": "wefweecasfwef ewf wefeafef wfw efewfwefwe",
+        "bugNo": "23423",
+        "bugLink": "http://asd,oedwemofewf.com",
+        "version": "my"
     }
 ]

@@ -1,9 +1,20 @@
 {{HEADER}}### {{version}}
+{{/HEADER}}
+{{BREAKINGCHANGESHEADER}}
+_Breaking changes:_
+{{/BREAKINGCHANGESHEADER}}
+{{BREAKINGCHANGESLOG}}
+* **{{title}}**: {{description}} {{/BREAKINGCHANGESLOG}}
+
+{{LOGHEADER}}
+
+<br/>
+
 
 |     |     |
 | --- | --- |
-{{/HEADER}}
-{{LOG}}| {{type}} | **{{title}}**: {{description}} |
+{{/LOGHEADER}}
+{{LOG}}| {{type}} | **{{title}}**: {{description}} | ([#{{bugNo}}]({{bugLink}})) |
 {{/LOG}}
 {{FOOTER}}
 

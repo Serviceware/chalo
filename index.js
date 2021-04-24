@@ -8,17 +8,17 @@ let settings = null;
 function start() {
   var args = process.argv.slice(2);
 
-  if(args[0] === 'init'){
+  if (args[0] === 'init') {
     createCalogenJsonFile();
     console.log('calogen.json file is created with default settings.');
     return;
   }
-  
+
   try {
     settings = JSON.parse(fs.readFileSync('./calogen.json'));
   } catch (error) {
     console.error('Please call "calogen init" to create calogen.json file.');
-    return; 
+    return;
   }
 
   switch (args[0]) {
@@ -33,11 +33,12 @@ function start() {
     case 'p':
     case 'publish':
       const versionArgIndex = args.indexOf('-v') + 1;
-      if (versionArgIndex === 0 || !args[versionArgIndex]) {
+      const version = args.slice(versionArgIndex).join(' ');
+      if (versionArgIndex === 0 || !version) {
         console.error('Please provide version using -v argument.');
         return;
       }
-      publishNewVersion(args[versionArgIndex]);
+      publishNewVersion(version);
       break;
     default:
       console.log('"a" or "add" to add new log.');
@@ -89,8 +90,10 @@ async function getLogInfoFromUserInput() {
   const type = await getUserInput(readline, `type(${JSON.stringify(settings.types).replace(/['"{}]+/g, '')}): `);
   const title = await getUserInput(readline, 'title: ');
   const description = await getUserInput(readline, 'description: ');
+  const bugNo = await getUserInput(readline, 'PBI no: ');
+  const bugLink = await getUserInput(readline, 'PBI link: ');
   readline.close();
-  return { type, title, description };
+  return { type, title, description, bugNo, bugLink };
 }
 
 function getUserInput(readline, text) {
@@ -134,7 +137,10 @@ function generateChangelog() {
 }
 
 function parseVersions(versions, template) {
+  let breakingChangesHeaderTemp = getTemplatePart(template, 'BREAKINGCHANGESHEADER');
+  let breakingChangesLogTemp = getTemplatePart(template, 'BREAKINGCHANGESLOG');
   let headerTemp = getTemplatePart(template, 'HEADER');
+  let logHeaderTemp = getTemplatePart(template, 'LOGHEADER');
   let logTemp = getTemplatePart(template, 'LOG');
   let footerTemp = getTemplatePart(template, 'FOOTER');
 
@@ -147,25 +153,46 @@ function parseVersions(versions, template) {
     }
     const header = applyValues(headerTemp, headerKeyValues);
     changelogArray.push(header);
+    const versionBreakingChangeLogs = [];
+    v.logs
+      .filter((l) => l.isBreakingChange)
+      .forEach((log) => {
+        const logKeyValues = [];
+        logKeyValues.push({ key: 'title', value: log.title });
+        logKeyValues.push({ key: 'description', value: log.description });
+        const logStr = applyValues(breakingChangesLogTemp, logKeyValues);
+        versionBreakingChangeLogs.push(logStr);
+      });
     const versionLogs = [];
-    v.logs.forEach((log) => {
-      const logKeyValues = [];
-      logKeyValues.push({ key: 'type', value: settings.types[log.type] });
-      logKeyValues.push({ key: 'title', value: log.title });
-      logKeyValues.push({ key: 'description', value: log.description });
-      const logStr = applyValues(logTemp, logKeyValues);
-      versionLogs.push(logStr);
-    });
+    v.logs
+      .filter((l) => !l.isBreakingChange)
+      .forEach((log) => {
+        const logKeyValues = [];
+        logKeyValues.push({ key: 'type', value: settings.types[log.type] });
+        logKeyValues.push({ key: 'title', value: log.title });
+        logKeyValues.push({ key: 'description', value: log.description });
+        logKeyValues.push({ key: 'bugNo', value: log.bugNo });
+        logKeyValues.push({ key: 'bugLink', value: log.bugLink });
+        const logStr = applyValues(logTemp, logKeyValues);
+        versionLogs.push(logStr);
+      });
+    if (versionBreakingChangeLogs.length) {
+      changelogArray.push(applyValues(breakingChangesHeaderTemp, null));
+      versionBreakingChangeLogs.sort((a, b) => a.localeCompare(b));
+      changelogArray = changelogArray.concat(versionBreakingChangeLogs);
+    }
+    const logHeader = applyValues(logHeaderTemp, null);
+    changelogArray.push(logHeader);
     versionLogs.sort((a, b) => a.localeCompare(b));
     changelogArray = changelogArray.concat(versionLogs);
-    const footer = applyValues(footerTemp, []);
+    const footer = applyValues(footerTemp, null);
     changelogArray.push(footer);
   });
   return changelogArray.join('');
 }
 
 function applyValues(template, keyValues) {
-  keyValues.forEach((kv) => {
+  keyValues?.forEach((kv) => {
     if (kv.value !== undefined || kv.value !== null) template = replaceAll(template, `{{${kv.key}}}`, kv.value);
   });
   Object.keys(settings.defaultValues).forEach((defaultKey) => {
