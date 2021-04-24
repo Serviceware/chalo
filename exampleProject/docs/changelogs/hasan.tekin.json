@@ -38,5 +38,21 @@
         "bugNo": "23423",
         "bugLink": "http://asd,oedwemofewf.com",
         "version": "my"
+    },
+    {
+        "type": "b",
+        "isBreakingChange": false,
+        "title": "new bug",
+        "description": "asdwqf wqdfq dqwdqwdqw dqwfqwq",
+        "bugNo": "4432342",
+        "bugLink": "www.ppbi.com"
+    },
+    {
+        "type": "f",
+        "isBreakingChange": true,
+        "title": "a new breaking change",
+        "description": "dwedqwd",
+        "bugNo": "wqdw",
+        "bugLink": "dqd"
     }
 ]

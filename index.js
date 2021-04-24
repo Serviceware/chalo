@@ -88,12 +88,13 @@ async function getLogInfoFromUserInput() {
     output: process.stdout,
   });
   const type = await getUserInput(readline, `type(${JSON.stringify(settings.types).replace(/['"{}]+/g, '')}): `);
+  const isBreakingChange = (await getUserInput(readline, 'is breaking change? y/n(default): ') || 'n') === 'y';
   const title = await getUserInput(readline, 'title: ');
   const description = await getUserInput(readline, 'description: ');
   const bugNo = await getUserInput(readline, 'PBI no: ');
   const bugLink = await getUserInput(readline, 'PBI link: ');
   readline.close();
-  return { type, title, description, bugNo, bugLink };
+  return { type, isBreakingChange, title, description, bugNo, bugLink };
 }
 
 function getUserInput(readline, text) {

@@ -1,6 +1,6 @@
 {
   "name": "@triuman/calogen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A changelog manager to avoid merge conflicts.",
   "main": "index.js",
   "bin": {
